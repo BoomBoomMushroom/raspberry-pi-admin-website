@@ -1,7 +1,5 @@
 import os
 
-os.system("git status")
-
 # Pull any updates!
 pullCommand = "git pull"
 os.system(pullCommand)
