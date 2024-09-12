@@ -26,4 +26,3 @@ def checkForUpdates():
 checkForUpdates()
 
 print("Hello, World! Main.py here!")
-print("Slight update :)")
