@@ -1,5 +1,4 @@
 import flask
-from flask_cors import CORS
 import json
 
 print("Main.py starting the webserver!")
@@ -14,10 +13,6 @@ def responseMake(r):
     return resp
 
 app = flask.Flask(__name__)
-CORS(app,
-     origins='*',
-     headers=['Content-Type', 'Authorization'],
-     expose_headers='Authorization')
 
 @app.route("/")
 def home():
