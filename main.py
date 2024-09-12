@@ -1,6 +1,7 @@
 import flask
 import json
 import subprocess
+from accounts import api as accountsAPI
 
 print("Main.py starting the webserver!")
 
@@ -31,5 +32,11 @@ def getNgrokTunnels():
     
     return flask.jsonify(pullOutput), 200
     #return responseMake(pullOutput), 200
+
+
+@app.route("/api/signup")
+def signup():
+    return accountsAPI.signup()
+
 
 app.run(host="0.0.0.0", port=7777)
