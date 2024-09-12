@@ -65,7 +65,8 @@ def run():
 
 if __name__ == "__main__":
     #start_ngrok.start()
-    ngrokProcess = subprocess.Popen(["python", "start_ngrok.py"])
+    DEVNULL = subprocess.DEVNULL
+    ngrokProcess = subprocess.Popen(["python", "start_ngrok.py"], stdin=DEVNULL, stderr=DEVNULL)
     
     try:
         run()
