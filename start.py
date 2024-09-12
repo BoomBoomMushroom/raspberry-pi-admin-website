@@ -1,6 +1,6 @@
 import os
-import subprocess
-import sys
+
+os.system("git status")
 
 # Pull any updates!
 pullCommand = "git pull"
