@@ -1,5 +1,7 @@
 import os
 import subprocess
+import sys
+import threading
 
 # Pull any updates!
 pullCommand = "git pull"
@@ -11,10 +13,9 @@ firstLineOfPullOutput = pullOutput.split("\n")[0]
 didUpdate = firstLineOfPullOutput != noUpdatesOutput
 
 if didUpdate:
-    print("Restarting Raspberry Pi in order to make sure changes are commited!")
-    os.system("sudo reboot")
-    exit()
+    print("Restarting Raspberry Pi in order to make sure changes are applied!")
+    #os.system("sudo reboot")
+    #exit()
 
-
-print("Everything is up to date! Not entering main program!")
+print("Everything is up to date! Now entering main program!")
 os.system("python main.py")
