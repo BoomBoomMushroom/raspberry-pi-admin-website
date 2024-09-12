@@ -17,4 +17,4 @@ if didUpdate:
 
 
 print("Everything is up to date! Not entering main program!")
-os.startfile("main.py")
+os.system("python main.py")
