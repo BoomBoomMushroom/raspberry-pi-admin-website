@@ -76,3 +76,6 @@ if __name__ == "__main__":
     
     mainPython.kill()
     ngrokProcess.kill()
+
+# MAKE SURE start.sh IS EXECUTABLE BY:
+# chmod a+x start.sh
