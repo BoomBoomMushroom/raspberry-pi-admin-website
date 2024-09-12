@@ -1,5 +1,6 @@
 import flask
 import json
+import subprocess
 
 print("Main.py starting the webserver!")
 
@@ -18,5 +19,14 @@ app = flask.Flask(__name__)
 def home():
     return responseMake("Website is working, this is /"), 200
 
+@app.route("/ngrok")
+def getNgrokTunnels():
+    command = "ngrok api tunnels list"
+    try:
+        pullOutput = subprocess.check_output(command, shell=True, text=True)
+    except:
+        pullOutput = "{}"
+    
+    return responseMake(pullOutput), 200
 
 app.run(host="0.0.0.0", port=7777)

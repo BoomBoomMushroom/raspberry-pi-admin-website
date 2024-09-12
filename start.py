@@ -1,7 +1,9 @@
 import os
 import subprocess
 import time
-import threading
+import start_ngrok
+
+start_ngrok.start()
 
 pullCommand = "git pull"
 
