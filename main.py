@@ -27,6 +27,8 @@ def getNgrokTunnels():
     except:
         pullOutput = "{}"
     
-    return responseMake(pullOutput), 200
+    
+    return flask.jsonify(pullOutput), 200
+    #return responseMake(pullOutput), 200
 
 app.run(host="0.0.0.0", port=7777)
