@@ -5,6 +5,9 @@ import threading
 
 pullCommand = "git pull"
 
+def installRequirements():
+    os.system("pip install -r requirements.txt")
+
 def updateCode():
     # Pull any updates!
     #os.system(pullCommand)
@@ -48,6 +51,7 @@ while True:
             mainPython.kill()
 
             time.sleep(3)
+            installRequirements()
             break
 
         # Run this staus check and update check loop every 2 seconds
