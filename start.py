@@ -79,3 +79,36 @@ if __name__ == "__main__":
 
 # MAKE SURE start.sh IS EXECUTABLE BY:
 # chmod a+x start.sh
+
+"""
+# Make the start.sh a service inside of systemd
+Steps:
+Create a new service file for your script:
+
+sudo nano /etc/systemd/system/start-admin-website.service
+start-admin-website.service:
+```
+[Unit]
+Description=Run the Admin Webserver at startup
+After=network-online.target
+
+[Service]
+ExecStart=/home/admin/raspberry-pi-admin-website/start.sh
+ExecStartPre=/bin/sleep 2
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Save and exit the file.
+
+Enable the service:
+    sudo systemctl enable start-admin-website.service
+
+You can start the service immediately (without rebooting) by running:
+    sudo systemctl start start-admin-website.service
+
+To check the status of the service:
+    sudo systemctl status start-admin-website.service
+"""
