@@ -26,7 +26,8 @@ def getNgrokTunnels():
         pullOutput = subprocess.check_output(command, shell=True, text=True)
     except:
         pullOutput = "{}"
-    
+        
+    pullOutput = json.dumps(pullOutput)
     
     return flask.jsonify(pullOutput), 200
     #return responseMake(pullOutput), 200
