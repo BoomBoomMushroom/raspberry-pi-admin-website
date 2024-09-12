@@ -2,21 +2,23 @@ import os
 import subprocess
 import sys
 
-try:
-    # Pull any updates!
-    pullCommand = "git pull"
-    noUpdatesOutput = "Already up to date."
+# Pull any updates!
+pullCommand = "git pull"
+os.system(pullCommand)
 
-    pullOutput = subprocess.check_output(pullCommand, shell=True, text=True)
-    firstLineOfPullOutput = pullOutput.split("\n")[0]
+"""
+noUpdatesOutput = "Already up to date."
 
-    didUpdate = firstLineOfPullOutput != noUpdatesOutput
+pullOutput = subprocess.check_output(pullCommand, shell=True, text=True)
+firstLineOfPullOutput = pullOutput.split("\n")[0]
 
-    if didUpdate:
-        print("Updated code!")
-        #print("Restarting Raspberry Pi in order to make sure changes are applied!")
-except:
-    pass
+didUpdate = firstLineOfPullOutput != noUpdatesOutput
+
+if didUpdate:
+    print("Restarting Raspberry Pi in order to make sure changes are applied!")
+    os.system("sudo reboot")
+    exit()
+"""
 
 print("Everything is up to date! Now entering main program!")
 os.system("python main.py")
