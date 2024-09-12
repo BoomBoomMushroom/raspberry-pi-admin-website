@@ -8,16 +8,18 @@ def closeScriptAndLaunchAnother(newScript="start.py"):
     subprocess.Popen(["python", newScript])
     exit()
 
+def getOutputOfCommand(command):
+    return subprocess.check_output(command, shell=True, text=True)
 
 def checkForUpdates():
-    commitDiffCommand = "git rev-list --count --left-right @{u}...HEAD"
-    pullOutput = subprocess.check_output(commitDiffCommand, shell=True, text=True)
-    commitsBehind = int(pullOutput.split("\t")[0])
+    fetch = getOutputOfCommand("git fetch")
+    status = getOutputOfCommand("git status")
     
-    print(f"Checking if we are behind... {pullOutput}")
+    #print(status)
+    print("Your branch is behind" in status, "Your branch is up to date" in status)
     
-    if commitsBehind > 0:
-        print(f"We are {commitsBehind} commits behind!")
+    if "Your branch is behind" in status:
+        print(f"We are behind on commits!")
         closeScriptAndLaunchAnother("start.py")
         #exit()
 
