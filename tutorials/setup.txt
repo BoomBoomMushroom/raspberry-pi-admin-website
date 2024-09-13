@@ -35,7 +35,7 @@ WantedBy=multi-user.target
 # !! Check and make sure the service is running properly !!
     `sudo systemctl status admin-website.service`
 
-    # My logs (also press 'q' to exit the GUI from the command above)
+    # My logs that are working (also press 'q' to exit the GUI from the command above)
     ```
     admin@piserver1:~/raspberry-pi-admin-website $ sudo systemctl status admin-website.service
     ● admin-website.service - Runs the admin website upon start up
@@ -62,4 +62,26 @@ WantedBy=multi-user.target
 View logs to debug (if needed)
     `journalctl -u admin-website.service`
 
+
+
+# !! TODO: Add Ngrok tutorial !!
+
+# Ngrok config
+```
+version: "3"
+agent:
+    authtoken: AUTH_TOKEN (from https://dashboard.ngrok.com/get-started/your-authtoken)
+    api_key: API_TOKEN (from https://dashboard.ngrok.com/api-keys)
+tunnels:
+    website:
+        addr: 7777
+        proto: http
+        hostname: HOSTNAME (from https://dashboard.ngrok.com/cloud-edge/domains)
+    ssh:
+        addr: 22
+        proto: tcp
+```
+
+
 Thank you <3
+Now you can move onto "connect.txt"

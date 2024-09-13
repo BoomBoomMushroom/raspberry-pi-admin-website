@@ -1,0 +1,21 @@
+To connect you should've setup an ngrok tcp tunnel, if not subsitute it with the Raspberry Pi's IPv4 Address
+
+# Enter ssh
+    # ngrok tunnel
+    ! You can find the tcp forwarded by going to the domain you set up in the setup.txt tutorial + /ngrok
+        You'll find a json thing, go to tunnels -> and find one who's public_url starts with "tcp://"
+
+    ex. Forwarding TCP tcp://4.tcp.ngrok.io:10561 -> 127.0.0.1:22
+    PORT = 10561
+    IP = 4.tcp.ngrok.io
+    admin = whatever your hostname was when you flashed the Raspberry Pi
+    `ssh -p PORT admin@IP`
+    It'll then ask for a password, which you set when flashing the Raspberry Pi
+
+    # ip tunnel
+    IP = ip of your Raspberry Pi (IPv4)
+    admin = whatever your hostname was when you flashed the Raspberry Pi
+    `ssh admin@IP`
+    It'll then ask for a password, which you set when flashing the Raspberry Pi
+
+Boom! Now you should be connected
