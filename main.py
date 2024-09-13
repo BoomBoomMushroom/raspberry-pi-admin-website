@@ -22,9 +22,9 @@ def sendStaticHTML(filePath):
 
 app = flask.Flask(__name__)
 
-@app.route('/static/<path:path>')
-def statics(path):
-    return send_from_directory('static', path)
+#@app.route('/static/<path:path>')
+#def statics(path):
+#    return send_from_directory('static', path)
 
 @app.route("/")
 def home():
