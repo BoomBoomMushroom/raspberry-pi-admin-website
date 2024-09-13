@@ -34,7 +34,7 @@ def getNgrokTunnels():
     #return responseMake(pullOutput), 200
 
 @app.route("/status/cpu")
-def getCpuusage():
+def getCpuUsage():
     command = "mpstat -P ALL"
     try:
         pullOutput = subprocess.check_output(command, shell=True, text=True)
@@ -42,7 +42,7 @@ def getCpuusage():
         pullOutput = f"Failed executing command ({command})"
     
     print(pullOutput)
-    return responseMake(pullOutput), 200
+    return pullOutput, 200
 
 @app.route("/api/signup")
 def signup():
