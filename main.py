@@ -15,11 +15,15 @@ def responseMake(r):
     resp.headers.add('Access-Control-Allow-Origin', "*")
     return resp
 
+def sendStaticHTML(filePath):
+    return flask.current_app.send_static_file(filePath)
+
 app = flask.Flask(__name__)
 
 @app.route("/")
 def home():
-    return responseMake("Website is working, this is /"), 200
+    return sendStaticHTML("html/index.html")
+    #return responseMake("Website is working, this is /"), 200
 
 @app.route("/ngrok")
 def getNgrokTunnels():
