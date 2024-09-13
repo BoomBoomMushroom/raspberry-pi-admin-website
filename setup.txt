@@ -1,0 +1,65 @@
+# Clone the repo into /home/admin
+    git clone REPO
+
+# Make new service file
+    `sudo nano /etc/systemd/system/admin-website.service`
+
+# Put this into the admin-website.service
+```
+[Unit]
+Description=Runs the admin website upon start up
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/admin/raspberry-pi-admin-website/start.py
+WorkingDirectory=/home/admin/raspberry-pi-admin-website/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=admin
+
+[Install]
+WantedBy=multi-user.target
+```
+
+# Reload the systemctl daemon?
+    `sudo systemctl daemon-reload`
+
+# Add the service to start on boot
+    `sudo systemctl enable admin-website.service`
+
+# Start the service immediately (optional)
+    `sudo systemctl start admin-website.service`
+
+# !! Check and make sure the service is running properly !!
+    `sudo systemctl status admin-website.service`
+
+    # My logs (also press 'q' to exit the GUI from the command above)
+    ```
+    admin@piserver1:~/raspberry-pi-admin-website $ sudo systemctl status admin-website.service
+    ● admin-website.service - Runs the admin website upon start up
+        Loaded: loaded (/etc/systemd/system/admin-website.service; enabled; preset: enabled)
+        Active: active (running) since Fri 2024-09-13 01:01:06 BST; 3min 45s ago
+    Main PID: 616 (python3)
+        Tasks: 14 (limit: 380)
+            CPU: 42.437s
+        CGroup: /system.slice/admin-website.service
+                ├─616 /usr/bin/python3 /home/admin/raspberry-pi-admin-website/start.py
+                ├─670 python start_ngrok.py
+                ├─671 sh -c "ngrok start --all"
+                ├─672 ngrok start --all
+                └─683 python main.py
+
+    Sep 13 01:01:13 piserver1 python3[683]:  * Debug mode: off
+    Sep 13 01:01:13 piserver1 python3[683]: WARNING: This is a development server. Do not use it in a production deplo>
+    Sep 13 01:01:13 piserver1 python3[683]:  * Running on all addresses (0.0.0.0)
+    Sep 13 01:01:13 piserver1 python3[683]:  * Running on http://127.0.0.1:7777
+    Sep 13 01:01:13 piserver1 python3[683]:  * Running on http://10.0.0.57:7777
+    Sep 13 01:01:13 piserver1 python3[683]: Press CTRL+C to quit
+    ```
+
+View logs to debug (if needed)
+    `journalctl -u admin-website.service`
+
+Thank you <3
