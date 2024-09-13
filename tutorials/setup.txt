@@ -66,7 +66,7 @@ View logs to debug (if needed)
 
 # !! TODO: Add Ngrok tutorial !!
 
-# Ngrok config
+# Ngrok config (`ngrok config edit`)
 ```
 version: "3"
 agent:
