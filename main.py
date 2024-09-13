@@ -41,7 +41,8 @@ def getCpuusage():
     except:
         pullOutput = f"Failed executing command ({command})"
     
-    return pullOutput, 200
+    print(pullOutput)
+    return responseMake(pullOutput), 200
 
 @app.route("/api/signup")
 def signup():
