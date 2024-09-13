@@ -33,10 +33,20 @@ def getNgrokTunnels():
     return flask.jsonify(pullOutput), 200
     #return responseMake(pullOutput), 200
 
+@app.route("/status/cpu")
+def getNgrokTunnels():
+    command = "mpstat -P ALL"
+    try:
+        pullOutput = subprocess.check_output(command, shell=True, text=True)
+    except:
+        pullOutput = f"Failed executing command ({command})"
+    
+    return pullOutput, 200
 
 @app.route("/api/signup")
 def signup():
     return accountsAPI.signup()
+
 
 
 app.run(host="0.0.0.0", port=7777)
