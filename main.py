@@ -1,4 +1,5 @@
 import flask
+from flask import Response
 import json
 import subprocess
 from accounts import api as accountsAPI
@@ -41,8 +42,8 @@ def getCpuUsage():
     except:
         pullOutput = f"Failed executing command ({command})"
     
-    print(pullOutput)
-    return pullOutput, 200
+    return Response(pullOutput, mimetype="text/plain"), 200
+
 
 @app.route("/api/signup")
 def signup():
