@@ -42,7 +42,7 @@ def getCpuUsage():
     except:
         pullOutput = f"Failed executing command ({command})"
     
-    return Response(pullOutput, mimetype="text/plain"), 200
+    return Response(pullOutput, mimetype="text/json"), 200
 
 
 @app.route("/api/signup")
