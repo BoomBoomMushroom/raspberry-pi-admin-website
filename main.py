@@ -1,5 +1,5 @@
 import flask
-from flask import Response
+from flask import send_from_directory
 import json
 import subprocess
 from accounts import api as accountsAPI
@@ -21,6 +21,10 @@ def sendStaticHTML(filePath):
     return flask.current_app.send_static_file(filePath)
 
 app = flask.Flask(__name__)
+
+@app.route('/static/<path:path>')
+def statics(path):
+    return send_from_directory('static', path)
 
 @app.route("/")
 def home():
