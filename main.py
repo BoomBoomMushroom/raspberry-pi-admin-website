@@ -15,6 +15,8 @@ def responseMake(r):
     resp.headers.add('Access-Control-Allow-Origin', "*")
     return resp
 
+# https://stackoverflow.com/questions/24578330/flask-how-to-serve-static-html
+# sendStaticHTML("html/index.html") # Dont use "static/" for leading
 def sendStaticHTML(filePath):
     return flask.current_app.send_static_file(filePath)
 
