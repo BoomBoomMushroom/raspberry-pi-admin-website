@@ -6,7 +6,13 @@ import start_ngrok
 pullCommand = "git pull"
 
 def installRequirements():
-    os.system("pip install -r requirements.txt")
+    requirements = []
+    with open("requirements.txt", "r") as f:
+        requirements = f.readlines()
+    
+    for r in requirements:
+        os.system(f"sudo apt install python3-{r}")
+    #os.system("pip install -r requirements.txt")
 
 def updateCode():
     # Pull any updates!
